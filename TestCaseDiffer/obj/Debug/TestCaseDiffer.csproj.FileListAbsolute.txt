@@ -1,0 +1,5 @@
+C:\Users\Женя\source\repos\TestCaseDiffer\TestCaseDiffer\obj\Debug\TestCaseDiffer.csproj.CoreCompileInputs.cache
+C:\Users\Женя\source\repos\TestCaseDiffer\TestCaseDiffer\bin\Debug\TestCaseDiffer.dll
+C:\Users\Женя\source\repos\TestCaseDiffer\TestCaseDiffer\bin\Debug\TestCaseDiffer.pdb
+C:\Users\Женя\source\repos\TestCaseDiffer\TestCaseDiffer\obj\Debug\TestCaseDiffer.dll
+C:\Users\Женя\source\repos\TestCaseDiffer\TestCaseDiffer\obj\Debug\TestCaseDiffer.pdb
