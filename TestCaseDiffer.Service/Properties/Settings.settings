@@ -5,5 +5,8 @@
     <Setting Name="ListenUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">http://+:9100</Value>
     </Setting>
+    <Setting Name="TfsConnection" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://hqrndtfs.avp.ru/tfs</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

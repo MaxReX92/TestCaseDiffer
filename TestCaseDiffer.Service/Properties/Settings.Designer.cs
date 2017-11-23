@@ -31,5 +31,17 @@ namespace TestCaseDiffer.Service.Properties {
                 return ((string)(this["ListenUrl"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://hqrndtfs.avp.ru/tfs")]
+        public string TfsConnection {
+            get {
+                return ((string)(this["TfsConnection"]));
+            }
+            set {
+                this["TfsConnection"] = value;
+            }
+        }
     }
 }
