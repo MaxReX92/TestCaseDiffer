@@ -103,6 +103,8 @@
   <ItemGroup>
     <Compile Include="AppStarter.cs" />
     <Compile Include="Controllers\DiffController.cs" />
+    <Compile Include="DefaultResponseProvider.cs" />
+    <Compile Include="IResponseProvider.cs" />
     <Compile Include="Windsor\WindsorControllerActivator.cs" />
     <Compile Include="LoggingMiddleware.cs" />
     <Compile Include="Program.cs" />
