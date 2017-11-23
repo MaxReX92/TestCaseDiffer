@@ -22,13 +22,13 @@ namespace TestCaseDiffer.Tests
 
 		}
 
-		//[TestMethod]
+		[TestMethod]
 		public void GetStepsTest()
 		{
 			var client = new TfsApiClient(_settings);
 			var changesProvider = new TfsApiChangesProvider(client);
 
-			var steps = changesProvider.GetChanges(2441738);
+			var steps = changesProvider.GetChanges(2441738).ToList();
 		}
 	}
 }
