@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestCaseDiffer.Tests
+namespace CommonService
 {
-	public class TestCaseDifferService
+	class Program
 	{
+		static void Main(string[] args)
+		{
+		}
 	}
 }
