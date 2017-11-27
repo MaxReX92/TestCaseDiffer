@@ -14,32 +14,12 @@ namespace TestCaseDiffer.Tests
         [TestMethod]
         public void BuildTest()
         {
-            var before = new PairedTag("div");
-            before.SubTags.Add(new StringValue("Before"));
-            before.Attributes.Add(new TagAttribute("class", "changeDiff"));
+            var firstChange = new CaseChange { ChangeNum = 1, ChangeDate = DateTime.Now, ChangedBy = "Maxim Kuznetsov", Steps = "before" };
+            var secondChange = new CaseChange { ChangeNum = 2, ChangeDate = DateTime.Now, ChangedBy = "Eugene Kuznetsov", Steps = "after" };
 
-            var after = new PairedTag("div");
-            after.SubTags.Add(new StringValue("After"));
+            var page = HtmlDiffPage.Create(12345, new[] { firstChange, secondChange });
 
-            var beforeLine = new PairedTag("th");
-            beforeLine.SubTags.Add(before);
-
-            var afterLine = new PairedTag("th");
-            afterLine.SubTags.Add(afterLine);
-
-            var tr = new PairedTag("tr");
-            tr.SubTags.Add(beforeLine);
-            tr.SubTags.Add(afterLine);
-            tr.Attributes.Add(new TagAttribute("class", "changeTable"));
-            tr.Attributes.Add(new TagAttribute("id", "toggleText1"));
-
-            var table = new PairedTag("table");
-            //table.SubTags.
-
-            var title = new PairedTag("div");
-            title.SubTags.Add(new StringValue("First"));
-            title.Attributes.Add(new TagAttribute("class", "changeTitle"));
-            title.Attributes.Add(new TagAttribute("onclick", "javascript:toggle('toggleText2');"));
+            var html = page.Build();
         }
     }
 }

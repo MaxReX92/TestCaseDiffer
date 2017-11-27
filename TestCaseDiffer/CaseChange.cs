@@ -9,13 +9,13 @@ namespace TestCaseDiffer
 {
 	public class CaseChange
 	{
-		public int ChangeNum { get; private set; }
+		public int ChangeNum { get; set; }
 
-		public DateTime ChangeDate { get; private set; }
+		public DateTime ChangeDate { get; set; }
 
-		public string ChangedBy { get; private set; }
+		public string ChangedBy { get; set; }
 
-		public string Steps { get; private set; }
+		public string Steps { get; set; }
 
 		public static CaseChange ParseRevision(Revision caseRevision)
 		{

@@ -21,7 +21,7 @@ namespace TestCaseDiffer
             if (values == null || !values.Any())
                 return String.Empty;
 
-            return $"/n/r{String.Join("/n/r", values)}";
+            return String.Join("\n\r\t", values);
         }
     }
 }

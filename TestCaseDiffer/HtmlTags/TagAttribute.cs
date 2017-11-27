@@ -19,7 +19,7 @@ namespace TestCaseDiffer.HtmlTags
 
         public string Build()
         {
-            return $"{Key}:{Value}";
+            return $"{Key}=\"{Value}\"";
         }
     }
 }
