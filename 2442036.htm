@@ -1,0 +1,48 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+
+	<style>.tree {padding-left: 3px; padding-bottom: 3px;}
+			.treeTitle {font-family: Verdana; background-color: lightblue; padding:4px; border: solid 1px; border-top-left-radius:3px; border-top-right-radius: 6px; font-weight: bold;}
+			.changes {border-bottom:solid 1px; border-left:solid 1px; border-right:solid 1px; border-bottom-left-radius:3px; border-bottom-right-radius:3px;}
+			.changeTitle { line-height:30px; padding: 0 10px; border-bottom:dotted 1px;}
+			.changeTitle:hover { background-color: silver; cursor: pointer;}
+			.changeTable {width:100%; padding: 5px; background-color:lightgrey; display:none;}
+			.changeDiff {float:left; font-size: 12px; padding: 5px;}</style>
+
+	<script language="javascript">var lastItem;				
+				function toggle(elementId) {		 		
+					var ele = document.getElementById(elementId);	
+					if(ele.style.display == "inline-table") {
+    					ele.style.display = "none";
+  					}
+					else {
+						ele.style.display = "inline-table";	
+						if (lastItem != null)
+						   lastItem.style.display = "none";								
+					}			
+					
+					if (lastItem == ele)
+					   lastItem = null;
+					else
+						lastItem = ele;	
+				}</script></head>
+
+	<body><div class="tree"><div class="treeTitle">TestCase 2442036 changes</div>
+
+	<div class="changes"><div class="changeTitle" onclick="javascript:toggle('toggleDiff1');">1 changed 24.10.2017 13:59:28 by Sergey Sedov</div>
+
+	<table class="changeTable" id="toggleDiff1"><tr><th><div class="changeDiff"><steps id="0" last="3"><step id="2" type="ValidateStep"><parameterizedString isformatted="true"><DIV><DIV><P>Создать через web интерфейс Sandbox (или API Sandbox) задачу аналогичную уже обработанной в AMA<BR/><BR/>https://sandbox-beta.sbx.avp.ru/assign  <BR/></P></DIV></DIV></parameterizedString><parameterizedString isformatted="true"><DIV>Создана задача с таким же KLMR заданием и параметрами (https://confluence.kaspersky.com/pages/viewpage.action?pageId=245433374&amp;#req-AMA-REQ-007) как в AMA<BR/><P>&nbsp;</P></DIV></parameterizedString><description/></step><step id="3" type="ActionStep"><parameterizedString isformatted="true"><DIV><P>Проверить, что при отправке через  web интерфейс Sandbox (или API Sandbox) получены результаты сопоставимые с результатами полученными при обработке в AMA</P></DIV></parameterizedString><parameterizedString isformatted="true"><DIV><P>&nbsp;</P></DIV></parameterizedString><description/></step></steps></div></th>
+
+	<th><div class="changeDiff"><steps id="0" last="2"><step id="2" type="ValidateStep"><parameterizedString isformatted="true"><DIV><P>Создать через web интерфейс Sandbox (или API Sandbox) задачу аналогичную уже обработанной в AMA<BR/><BR/>https://sandbox-beta.sbx.avp.ru/assign  <BR/></P></DIV></parameterizedString><parameterizedString isformatted="true">Создана задача с таким же KLMR заданием и параметрами (https://confluence.kaspersky.com/pages/viewpage.action?pageId=245433374&amp;#req-AMA-REQ-007) как в AMA<BR/><P>&nbsp;</P></parameterizedString><description/></step></steps></div></th></tr></table>
+
+	<div class="changeTitle" onclick="javascript:toggle('toggleDiff2');">2 changed 24.10.2017 14:00:59 by Sergey Sedov</div>
+
+	<table class="changeTable" id="toggleDiff2"><tr><th><div class="changeDiff"><steps id="0" last="3"><step id="2" type="ValidateStep"><parameterizedString isformatted="true"><DIV><DIV><P>Создать через web интерфейс Sandbox (или API Sandbox) задачу аналогичную уже обработанной в AMA<BR/><BR/>https://sandbox-beta.sbx.avp.ru/assign  <BR/></P></DIV></DIV></parameterizedString><parameterizedString isformatted="true">Создана задача с таким же KLMR заданием и параметрами как в AMA (https://confluence.kaspersky.com/pages/viewpage.action?pageId=245433374&amp;#req-AMA-REQ-007) <BR/><P>&nbsp;</P></parameterizedString><description/></step><step id="3" type="ValidateStep"><parameterizedString isformatted="true"><DIV><P>Проверить, что при отправке через  web интерфейс Sandbox (или API Sandbox) получены результаты сопоставимые с результатами полученными при обработке в AMA</P></DIV></parameterizedString><parameterizedString isformatted="true">Различия в наборе файлов полученных при обработке задачи в AMA и при отправке через  web интерфейс Sandbox (или API Sandbox) составляет не более **%<P>&nbsp;</P></parameterizedString><description/></step></steps></div></th>
+
+	<th><div class="changeDiff"><steps id="0" last="3"><step id="2" type="ValidateStep"><parameterizedString isformatted="true"><DIV><DIV><P>Создать через web интерфейс Sandbox (или API Sandbox) задачу аналогичную уже обработанной в AMA<BR/><BR/>https://sandbox-beta.sbx.avp.ru/assign  <BR/></P></DIV></DIV></parameterizedString><parameterizedString isformatted="true"><DIV>Создана задача с таким же KLMR заданием и параметрами (https://confluence.kaspersky.com/pages/viewpage.action?pageId=245433374&amp;#req-AMA-REQ-007) как в AMA<BR/><P>&nbsp;</P></DIV></parameterizedString><description/></step><step id="3" type="ActionStep"><parameterizedString isformatted="true"><DIV><P>Проверить, что при отправке через  web интерфейс Sandbox (или API Sandbox) получены результаты сопоставимые с результатами полученными при обработке в AMA</P></DIV></parameterizedString><parameterizedString isformatted="true"><DIV><P>&nbsp;</P></DIV></parameterizedString><description/></step></steps></div></th></tr></table>
+
+	<div class="changeTitle" onclick="javascript:toggle('toggleDiff3');">3 changed 26.10.2017 10:52:34 by Sergey Sedov</div>
+
+	<table class="changeTable" id="toggleDiff3"><tr><th><div class="changeDiff"></div></th>
+
+	<th><div class="changeDiff"><steps id="0" last="3"><step id="2" type="ValidateStep"><parameterizedString isformatted="true"><DIV><DIV><P>Создать через web интерфейс Sandbox (или API Sandbox) задачу аналогичную уже обработанной в AMA<BR/><BR/>https://sandbox-beta.sbx.avp.ru/assign  <BR/></P></DIV></DIV></parameterizedString><parameterizedString isformatted="true">Создана задача с таким же KLMR заданием и параметрами как в AMA (https://confluence.kaspersky.com/pages/viewpage.action?pageId=245433374&amp;#req-AMA-REQ-007) <BR/><P>&nbsp;</P></parameterizedString><description/></step><step id="3" type="ValidateStep"><parameterizedString isformatted="true"><DIV><P>Проверить, что при отправке через  web интерфейс Sandbox (или API Sandbox) получены результаты сопоставимые с результатами полученными при обработке в AMA</P></DIV></parameterizedString><parameterizedString isformatted="true">Различия в наборе файлов полученных при обработке задачи в AMA и при отправке через  web интерфейс Sandbox (или API Sandbox) составляет не более **%<P>&nbsp;</P></parameterizedString><description/></step></steps></div></th></tr></table></div></div></body></html>

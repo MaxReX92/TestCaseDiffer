@@ -38,6 +38,8 @@ namespace TestCaseDiffer.Service.Controllers
 			try
 			{
 				var page = _pageCreator.CreateDiffPage(parsedId);
+				//TODO: Впихнуть куда надо
+				//page = HttpUtility.HtmlDecode(page);
 				return _responseProvider.SuccessStringResponse(page);
 			}
 			catch (Exception ex)
