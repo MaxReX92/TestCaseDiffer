@@ -1,4 +1,5 @@
-﻿using Castle.MicroKernel.Resolvers.SpecializedResolvers;
+﻿using Castle.MicroKernel.Registration;
+using Castle.MicroKernel.Resolvers.SpecializedResolvers;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using Microsoft.Owin.Hosting;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestCaseDiffer.Tfs;
 using Topshelf;
 using Topshelf.HostConfigurators;
 
@@ -26,6 +28,7 @@ namespace TestCaseDiffer.Service
 			{
 				try
 				{
+                    container.Register(Component.For<IChangesProvider>().ImplementedBy<PreparedChangesProvider>());
 					container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel));
 					container.Install(FromAssembly.This());
 					return (int)HostFactory.Run(hostConfigurator => Configure<TestCaseDifferService>(hostConfigurator, container));
