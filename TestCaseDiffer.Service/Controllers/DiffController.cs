@@ -40,6 +40,7 @@ namespace TestCaseDiffer.Service.Controllers
 				var page = _pageCreator.CreateDiffPage(parsedId);
 				return _responseProvider.SuccessStringResponse(page);
 			}
+            //TODO: Дописать обработки ошибок
 			catch (Exception ex)
 			{
 				_logger.Error(ex, "Fail to create diff");

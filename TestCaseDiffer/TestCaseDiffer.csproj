@@ -215,6 +215,7 @@
     <Compile Include="ChangesTree.cs" />
     <Compile Include="ChangeTable.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Differ\Differ.cs" />
     <Compile Include="DiffStep.cs" />
     <Compile Include="DiffStepRow.cs" />
     <Compile Include="Exceptions\WorkItemNotFoundException.cs" />

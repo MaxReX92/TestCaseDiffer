@@ -9,7 +9,7 @@ namespace TestCaseDiffer
 {
     public class DiffStep : PairedTag
     {
-        private DiffStep() : base("th")
+        public DiffStep() : base("th")
         {
             SubTag = new PairedTag("div");
             SubTag.AddAttribute(new TagAttribute("class", "changeDiff"));
@@ -17,13 +17,28 @@ namespace TestCaseDiffer
         }
 
         private PairedTag SubTag { get; }
-
-        public static DiffStep Create(string steps)
+        
+        public void AddEqualText(string equalText)
         {
-            var diffSteps = new DiffStep();
-            diffSteps.SubTag.AddSubTag(new StringValue(steps));
+            SubTag.AddSubTag(new StringValue(equalText));
+        }
 
-            return diffSteps;
+        public void AddDeletedText(string deletedText)
+        {
+            SubTag.AddSubTag(GetColoredText(deletedText, "red"));
+        }
+
+        public void AddInsertedText(string insertedText)
+        {
+            SubTag.AddSubTag(GetColoredText(insertedText, "green"));
+        }
+
+        private PairedTag GetColoredText(string text, string colorName)
+        {
+            var fontTag = new PairedTag("font");
+            fontTag.AddAttribute(new TagAttribute("color", colorName));
+            fontTag.AddSubTag(new StringValue(text));
+            return fontTag;
         }
     }
 }

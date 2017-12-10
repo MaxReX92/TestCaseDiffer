@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestCaseDiffer.Differ;
 using TestCaseDiffer.HtmlTags;
 
 namespace TestCaseDiffer
@@ -18,9 +19,33 @@ namespace TestCaseDiffer
             var result = new DiffStepRow();
 
             //TODO: тут дифф шагов и форматирование
-            var prevStepDiff = DiffStep.Create(prevStep);
-            var currentStepDiff = DiffStep.Create(currentStep);
 
+            var differ = new diff_match_patch();
+            var diffs = differ.diff_main(prevStep, currentStep);
+
+            var prevStepDiff = new DiffStep();
+            var currentStepDiff = new DiffStep();
+
+            foreach (var diff in diffs)
+            {
+                diff.ToString();
+                switch (diff.operation)
+                {
+                    case Operation.DELETE:
+                        prevStepDiff.AddDeletedText(diff.text);
+                        break;
+                    case Operation.INSERT:
+                        currentStepDiff.AddInsertedText(diff.text);
+                        break;
+                    case Operation.EQUAL:
+                        prevStepDiff.AddEqualText(diff.text);
+                        currentStepDiff.AddEqualText(diff.text);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
             var stepIdColumn = new PairedTag("th");
             stepIdColumn.AddSubTag(new StringValue($"Step {stepId}"));
 
