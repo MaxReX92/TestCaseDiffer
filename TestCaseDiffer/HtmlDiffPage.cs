@@ -38,7 +38,7 @@ namespace TestCaseDiffer
             script.AddAttribute(new TagAttribute("language", "javascript"));
             script.AddSubTag(new StringValue(Constants.JavaScript));
             page.Head.AddSubTag(script);
-            page.Body.AddSubTag(ChangesTree.Create(testCase, changes.OrderByDescending(x => x.ChangeNum)));
+            page.Body.AddSubTag(ChangesTree.Create(testCase, changes.OrderBy(x => x.ChangeNum)));
 
             return page;
         }

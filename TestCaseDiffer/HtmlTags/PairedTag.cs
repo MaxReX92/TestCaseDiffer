@@ -26,7 +26,6 @@ namespace TestCaseDiffer.HtmlTags
             foreach (var tag in tags)
                 AddSubTag(tag);
         }
-
         
 
         public override string Build()

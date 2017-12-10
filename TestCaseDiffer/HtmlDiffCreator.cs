@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using TestCaseDiffer.Tfs;
 
 namespace TestCaseDiffer
@@ -20,7 +21,7 @@ namespace TestCaseDiffer
 		{
 			var changes = _changesProvider.GetChanges(testCaseId);
             var page = HtmlDiffPage.Create(testCaseId, changes);
-            return page.Build();            
-		}
+            return HttpUtility.HtmlDecode(page.Build());  
+        }
 	}
 }
