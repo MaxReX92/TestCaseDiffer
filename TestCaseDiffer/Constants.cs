@@ -28,14 +28,21 @@ namespace TestCaseDiffer
 
         public const string Style = @"
             .mainPage { background-color: #DAE3E7; }
-            .tree { background: #fff; padding: 30px; }
+            .tree { background: #fff; padding: 20px; }
 			.treeTitle {color: #545e69; font-size: 24px;}
-			.changes { font-family: 'Lato', arial, sans-serif; }
-			.changeTitle {border-top: 1px solid #c7cdd8; display: block; padding: 18px 30px;    color: #333333;    font-weight: 600;    font-size: 18px;}
-			.changeTitle:hover {background-color: silver;}
-			.changeTable {width:100%; display:none; word-wrap:break-word;}
-			.changeDiff {}
-			.stepIdColumn {width:50px;}			
+			.treeContent { font-family: 'Lato', arial, sans-serif; }
+			.treeContentTitle {
+                border-top: 2px solid #c7cdd8; 
+                padding: 10px 10px; 
+                font-weight: 600; 
+                font-size: 18px; 
+                transition-duration: 0.3s;
+                cursor: pointer; }
+			.treeContentTitle:hover {background-color: #c7cdd8;}
+			.changesTable {width:100%; display:none;}
+            .tableRow {}
+            .tableCell {padding: 5px; text-align: left; vertical-align: top;}
+			.stepIdCell {width:50px; }			
 			.deletedText {background-color: Salmon;}
 			.addedText {background-color: LightGreen;}";
 

@@ -8,25 +8,28 @@ using System.Xml.XPath;
 using TestCaseDiffer.Differ;
 using TestCaseDiffer.Exceptions;
 using TestCaseDiffer.HtmlTags;
+using TestCaseDiffer.PageObjects;
 
-namespace TestCaseDiffer
+namespace TestCaseDiffer.PageObjects
 {
     public class ChangeTable : PairedTag
     {
-        private ChangeTable() : base("table")
+        public ChangeTable(string id, string prevSteps, string currentSteps) : base("table")
         {            
-            AddAttribute(new TagAttribute("class", "changeTable"));			
+            AddAttribute(new TagAttribute("class", "changesTable"));
+            AddAttribute(new TagAttribute("id", id));
+
+            Fill(prevSteps, currentSteps);
         }
         
-        public static ChangeTable Create(string id, string prevSteps, string currentSteps)
+        public void Fill(string prevSteps, string currentSteps)
         {
-            var table = new ChangeTable();
 			var notEmptySteps = currentSteps;
 			if (String.IsNullOrWhiteSpace(notEmptySteps))
 				notEmptySteps = prevSteps;
 
 			if (String.IsNullOrWhiteSpace(notEmptySteps))
-				return table;
+				return;
 			
 			var xml = XDocument.Parse(notEmptySteps);
             var stepsNode = xml.Element("steps");            
@@ -45,32 +48,22 @@ namespace TestCaseDiffer
 				var prevStrs = prevStep == null ? Enumerable.Empty<XElement>() : prevStep.XPathSelectElements("parameterizedString");
 				var currentStrs = prevStep == null ? Enumerable.Empty<XElement>() : currentStep.XPathSelectElements("parameterizedString");
 
-				var actionRow = CreateRow(0, prevStrs, currentStrs);
 				var resultRow = CreateRow(1, prevStrs, currentStrs);
+				var actionRow = CreateRow(0, prevStrs, currentStrs);
+				actionRow.InsertSubTag(0, new StepCell(stepId));
 
-				var stepIdColumn = new PairedTag("td");
-				stepIdColumn.AddAttribute(new TagAttribute("rowspan", "2"));
-				stepIdColumn.AddAttribute(new TagAttribute("class", "stepIdColumn"));
-				stepIdColumn.AddSubTag(new StringValue($"Step {stepId}"));
-				actionRow.InsertSubTag(0, stepIdColumn);
-
-				table.AddSubTag(actionRow);
-				table.AddSubTag(resultRow);				
+				AddSubTag(actionRow);
+				AddSubTag(resultRow);				
             }
-
-            table.AddAttribute(new TagAttribute("id", id));
-            return table;
         }
 
-		private static PairedTag CreateRow(int index, IEnumerable<XElement> prevStrs, IEnumerable<XElement> currentStrs)
+		private static TableRow CreateRow(int index, IEnumerable<XElement> prevStrs, IEnumerable<XElement> currentStrs)
 		{
-			var result = new PairedTag("tr");			
 			var prev = GetElementAtValue(index, prevStrs);
 			var current = GetElementAtValue(index, currentStrs);
 
-			AddChanges(prev, current, result);
-			return result;
-		}
+			return new TableRow(prev, current);
+        }
 
 		private static XElement GetStepById(string steps, int stepId)
         {
@@ -85,40 +78,6 @@ namespace TestCaseDiffer
 		{
 			var element = elements.ElementAtOrDefault(index);
 			return element == null ? String.Empty : element.Value;
-		}
-
-		private static void AddChanges(string prev, string current, PairedTag row)
-		{
-			var differ = new diff_match_patch();
-			var diffs = differ.diff_main(prev, current, false);
-
-			var prevStepDiff = new DiffStep();
-			var currentStepDiff = new DiffStep();
-
-			foreach (var diff in diffs)
-			{
-				diff.ToString();
-				switch (diff.operation)
-				{
-					case Operation.DELETE:
-						prevStepDiff.AddDeletedText(diff.text);
-						break;
-					case Operation.INSERT:
-						currentStepDiff.AddInsertedText(diff.text);
-						break;
-					case Operation.EQUAL:
-						prevStepDiff.AddEqualText(diff.text);
-						currentStepDiff.AddEqualText(diff.text);
-						break;
-					default:
-						break;
-				}
-			}
-
-			var subRow = new PairedTag("td");
-			subRow.AddSubTag(prevStepDiff);
-			subRow.AddSubTag(currentStepDiff);
-			row.AddSubTag(subRow);
-		}
+		}        
 	}
 }

@@ -211,25 +211,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CaseChange.cs" />
-    <Compile Include="CaseStep.cs" />
-    <Compile Include="ChangesTree.cs" />
-    <Compile Include="ChangeTable.cs" />
+    <Compile Include="PageObjects\BackgroundColoredText.cs" />
+    <Compile Include="PageObjects\ChangesTree.cs" />
+    <Compile Include="PageObjects\ChangeTable.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Differ\Differ.cs" />
-    <Compile Include="DiffStep.cs" />
-    <Compile Include="DiffStepRow.cs" />
+    <Compile Include="PageObjects\DiffCell.cs" />
+    <Compile Include="PageObjects\StepCell.cs" />
+    <Compile Include="PageObjects\TableRow.cs" />
     <Compile Include="Exceptions\WorkItemNotFoundException.cs" />
     <Compile Include="Exceptions\WrongStepsException.cs" />
     <Compile Include="Exceptions\WorkItemTypeException.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="HtmlDiffCreator.cs" />
-    <Compile Include="HtmlDiffPage.cs" />
+    <Compile Include="PageObjects\MainPage.cs" />
     <Compile Include="HtmlTags\AbstractTag.cs" />
     <Compile Include="HtmlTags\PairedTag.cs" />
     <Compile Include="HtmlTags\SingleTag.cs" />
     <Compile Include="HtmlTags\StringValue.cs" />
     <Compile Include="HtmlTags\TagAttribute.cs" />
     <Compile Include="IDiffPageCreator.cs" />
+    <Compile Include="PageObjects\TableCell.cs" />
+    <Compile Include="PageObjects\TreeContent.cs" />
+    <Compile Include="PageObjects\TreeContentTitle.cs" />
+    <Compile Include="PageObjects\TreeTitle.cs" />
     <Compile Include="PreparedChangesProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tfs\IChangesProvider.cs" />

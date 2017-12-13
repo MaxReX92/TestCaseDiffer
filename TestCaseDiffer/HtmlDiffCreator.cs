@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using TestCaseDiffer.PageObjects;
 using TestCaseDiffer.Tfs;
 
 namespace TestCaseDiffer
@@ -20,7 +21,7 @@ namespace TestCaseDiffer
 		public string CreateDiffPage(int testCaseId)
 		{
 			var changes = _changesProvider.GetChanges(testCaseId);
-            var page = HtmlDiffPage.Create(testCaseId, changes);
+            var page = new MainPage(testCaseId, changes);
             return HttpUtility.HtmlDecode(page.Build());  
         }
 	}
