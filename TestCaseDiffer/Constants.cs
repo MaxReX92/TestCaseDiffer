@@ -31,8 +31,11 @@ namespace TestCaseDiffer
 			.changes {border-bottom:solid 1px; border-left:solid 1px; border-right:solid 1px; border-bottom-left-radius:3px; border-bottom-right-radius:3px;}
 			.changeTitle { line-height:30px; padding: 0 10px; border-bottom:dotted 1px;}
 			.changeTitle:hover { background-color: silver; cursor: pointer;}
-			.changeTable {width:100%; padding: 5px; background-color:lightgrey; display:none;}
-			.changeDiff {float:left; font-size: 12px; padding: 5px;}";
+			.changeTable {width:100%; padding: 5px; background-color:lightgrey; display:none; word-wrap:break-word;}
+			.changeDiff {font-size: 16px; padding: 5px; border-bottom:solid 1px;}
+			.stepIdColumn {width:50px; border-bottom:solid 2px;}			
+			.deletedText {background-color: Salmon;}
+			.addedText {background-color: LightGreen;}";
 
     }
 }

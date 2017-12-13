@@ -8,18 +8,26 @@ namespace TestCaseDiffer.HtmlTags
 {
     public class PairedTag : AbstractTag
     {
-        public PairedTag(string name)
-        {
-            Name = name;
-        }
+		private List<AbstractTag> _subTags;
 
-        public ICollection<AbstractTag> SubTags = new List<AbstractTag>();
+		public PairedTag(string name)
+		{
+			_subTags = new List<AbstractTag>();
+			Name = name;
+		}
+
+		public IReadOnlyCollection<AbstractTag> SubTags => _subTags;
         protected override string Name { get; }
 
         public void AddSubTag(AbstractTag tag)
         {
-            SubTags.Add(tag);
+			_subTags.Add(tag);
         }
+
+		public void InsertSubTag(int index, AbstractTag tag)
+		{
+			_subTags.Insert(index, tag);
+		}
 
         public void AddSubTagRange(IEnumerable<AbstractTag> tags)
         {
@@ -30,7 +38,7 @@ namespace TestCaseDiffer.HtmlTags
 
         public override string Build()
         {
-            return $"<{Name}{Attributes.Select(x => x.Build()).ToSpaceSeparated()}>{SubTags.Select(x => x.Build()).ToLineSeparated()}</{Name}>";
+            return $"<{Name}{Attributes.Select(x => x.Build()).ToSpaceSeparated()}>{SubTags.Select(x => x.Build()).SeparatedBy(String.Empty)}</{Name}>";
         }
     }
 }

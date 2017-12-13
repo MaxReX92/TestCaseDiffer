@@ -10,18 +10,21 @@ namespace TestCaseDiffer
     {
         public static string ToSpaceSeparated(this IEnumerable<string> values)
         {
-            if (values == null || !values.Any())
-                return String.Empty;
-
-            return $" {String.Join(" ", values)}";
-        }
+			var value = values.SeparatedBy(" ");
+			return String.IsNullOrEmpty(value) ? value : $" {value}";
+		}
 
         public static string ToLineSeparated(this IEnumerable<string> values)
         {
-            if (values == null || !values.Any())
-                return String.Empty;
+			return values.SeparatedBy("\n");
+		}
 
-            return String.Join("\n\r\t", values);
-        }
+		public static string SeparatedBy(this IEnumerable<string> values, string separator)
+		{
+			if (values == null || !values.Any())
+				return String.Empty;
+
+			return String.Join(separator, values);
+		}
     }
 }

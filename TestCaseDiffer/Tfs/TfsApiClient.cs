@@ -21,7 +21,7 @@ namespace TestCaseDiffer.Tfs
 		public WorkItem GetTestCase(int testCaseId)
 		{
 			var workItem = _workItemStore.GetWorkItem(testCaseId);
-            if (workItem.Type.Name != "TestCase")
+            if (workItem.Type.Name != "Test Case")
                 throw new WorkItemTypeException();
             return workItem;
 		}		
