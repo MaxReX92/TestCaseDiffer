@@ -26,14 +26,16 @@ namespace TestCaseDiffer
 						lastItem = ele;	
 				}";
 
-        public const string Style = @".tree {padding-left: 3px; padding-bottom: 3px;}
-			.treeTitle {font-family: Verdana; background-color: lightblue; padding:4px; border: solid 1px; border-top-left-radius:3px; border-top-right-radius: 6px; font-weight: bold;}
-			.changes {border-bottom:solid 1px; border-left:solid 1px; border-right:solid 1px; border-bottom-left-radius:3px; border-bottom-right-radius:3px;}
-			.changeTitle { line-height:30px; padding: 0 10px; border-bottom:dotted 1px;}
-			.changeTitle:hover { background-color: silver; cursor: pointer;}
-			.changeTable {width:100%; padding: 5px; background-color:lightgrey; display:none; word-wrap:break-word;}
-			.changeDiff {font-size: 16px; padding: 5px; border-bottom:solid 1px;}
-			.stepIdColumn {width:50px; border-bottom:solid 2px;}			
+        public const string Style = @"
+            .mainPage { background-color: #DAE3E7; }
+            .tree { background: #fff; padding: 30px; }
+			.treeTitle {color: #545e69; font-size: 24px;}
+			.changes { font-family: 'Lato', arial, sans-serif; }
+			.changeTitle {border-top: 1px solid #c7cdd8; display: block; padding: 18px 30px;    color: #333333;    font-weight: 600;    font-size: 18px;}
+			.changeTitle:hover {background-color: silver;}
+			.changeTable {width:100%; display:none; word-wrap:break-word;}
+			.changeDiff {}
+			.stepIdColumn {width:50px;}			
 			.deletedText {background-color: Salmon;}
 			.addedText {background-color: LightGreen;}";
 

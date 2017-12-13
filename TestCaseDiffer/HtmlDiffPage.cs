@@ -12,7 +12,9 @@ namespace TestCaseDiffer
 		private HtmlDiffPage() : base("html")
 		{
 			AddSubTag(Head = new PairedTag("head"));
-			AddSubTag(Body = new PairedTag("body"));
+            var body = new PairedTag("body");
+            body.AddAttribute(new TagAttribute("class", "mainPage"));
+			AddSubTag(Body = body);
 		}
 
 		public PairedTag Head { get; }

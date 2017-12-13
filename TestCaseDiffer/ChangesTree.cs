@@ -15,7 +15,7 @@ namespace TestCaseDiffer
 
             var title = new PairedTag("div");
             title.Attributes.Add( new TagAttribute("class", "treeTitle"));
-            title.AddSubTag(new StringValue($"TestCase {caseId} changes"));
+            title.AddSubTag(new StringValue($"Test Case {caseId} changes"));
             AddSubTag(title);
 
             Changes = new PairedTag("div");
