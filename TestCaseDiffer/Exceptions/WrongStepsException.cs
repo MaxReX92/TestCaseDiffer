@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestCaseDiffer.Exceptions
 {
-    class WrongStepsException : Exception
+    public class WrongStepsException : Exception
     {
         public WrongStepsException()
         {

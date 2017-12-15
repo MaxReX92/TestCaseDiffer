@@ -37,6 +37,7 @@ namespace TestCaseDiffer.PageObjects
 			var prevStepsDoc = String.IsNullOrWhiteSpace(prevSteps) ? null : XDocument.Parse(prevSteps);
 			var currentStepsDoc = String.IsNullOrWhiteSpace(currentSteps) ? null : XDocument.Parse(currentSteps);
 
+			int stepNum = 1;
 			foreach (var step in stepsNode.Elements())
             {
                 if (step.Name != "step")
@@ -44,17 +45,19 @@ namespace TestCaseDiffer.PageObjects
 
                 var stepIdAttr = step.Attribute("id");
                 if (!Int32.TryParse(stepIdAttr.Value, out int stepId))
-                    throw new WrongStepsException("Step id missed");
+                    throw new WrongStepsException("Step id missed.");
 
 				var prevStep = GetStepById(prevStepsDoc, stepId);
 				var currentStep = GetStepById(currentStepsDoc, stepId);
 
 				var prevStrs = prevStep == null ? Enumerable.Empty<XElement>() : prevStep.XPathSelectElements("parameterizedString");
-				var currentStrs = prevStep == null ? Enumerable.Empty<XElement>() : currentStep.XPathSelectElements("parameterizedString");
+				var currentStrs = currentStep == null ? Enumerable.Empty<XElement>() : currentStep.XPathSelectElements("parameterizedString");
 
 				var resultRow = CreateRow(1, prevStrs, currentStrs);
 				var actionRow = CreateRow(0, prevStrs, currentStrs);
-				actionRow.InsertSubTag(0, new StepCell(stepId));
+
+				//Номер шага может отличаться от отображаемого порядка. Поэтому просто инкрементим
+				actionRow.InsertSubTag(0, new StepCell(stepNum++));
 
 				AddSubTag(actionRow);
 				AddSubTag(resultRow);				

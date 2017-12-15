@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestCaseDiffer.Exceptions
 {
-    class WorkItemTypeException : Exception
+    public class WorkItemTypeException : Exception
     {
         public WorkItemTypeException()
         {
