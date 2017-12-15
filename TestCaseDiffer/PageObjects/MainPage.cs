@@ -36,7 +36,7 @@ namespace TestCaseDiffer.PageObjects
 
         public override string Build()
         {
-            return String.Concat("<!doctype html>\n", base.Build());
-        }        
+			return String.Concat("<!doctype html>\n", base.Build());
+		}        
     }
 }

@@ -28,5 +28,10 @@ namespace TestCaseDiffer.PageObjects
         {
             AddSubTag(new BackgroundColoredText("addedText", insertedText));
         }
+
+		public override string Build()
+		{
+			return base.Build().Replace("\n", "<BR>");
+		}
     }
 }

@@ -22,7 +22,7 @@ namespace TestCaseDiffer
 		{
 			var changes = _changesProvider.GetChanges(testCaseId);
             var page = new MainPage(testCaseId, changes);
-            return HttpUtility.HtmlDecode(page.Build());  
+            return page.Build();  			
         }
 	}
 }

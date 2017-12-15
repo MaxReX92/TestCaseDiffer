@@ -11,12 +11,16 @@ namespace TestCaseDiffer.PageObjects
     {
         public TreeContentTitle(CaseChange currentChange) : base("div")
         {
-            AddAttribute(new TagAttribute("class", "treeContentTitle"));
             ToggleId = $"toggleDiff{currentChange.ChangeNum}";
-            AddAttribute(new TagAttribute("onclick", $"javascript:toggle('{ToggleId}');"));
+			TitleId = $"title{currentChange.ChangeNum}";
+
+            AddAttribute(new TagAttribute("class", "treeContentTitle"));
+			AddAttribute(new TagAttribute("id", TitleId));
+			AddAttribute(new TagAttribute("onclick", $"javascript:toggle('{ToggleId}','{TitleId}');"));
             AddSubTag(new StringValue($"{currentChange.ChangeNum} changed {currentChange.ChangeDate} by {currentChange.ChangedBy}"));
         }
 
         public string ToggleId { get; }
-    }
+        private string TitleId { get; }
+	}
 }

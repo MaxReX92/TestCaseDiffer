@@ -8,6 +8,6 @@ namespace TestCaseDiffer.Tfs
 {
 	public interface IChangesProvider
 	{
-		IEnumerable<CaseChange> GetChanges(int testCaseId);
+		ICollection<CaseChange> GetChanges(int testCaseId);
 	}
 }

@@ -32,8 +32,12 @@ namespace TestCaseDiffer.PageObjects
 				return;
 			
 			var xml = XDocument.Parse(notEmptySteps);
-            var stepsNode = xml.Element("steps");            
-            foreach (var step in stepsNode.Elements())
+            var stepsNode = xml.Element("steps");
+
+			var prevStepsDoc = String.IsNullOrWhiteSpace(prevSteps) ? null : XDocument.Parse(prevSteps);
+			var currentStepsDoc = String.IsNullOrWhiteSpace(currentSteps) ? null : XDocument.Parse(currentSteps);
+
+			foreach (var step in stepsNode.Elements())
             {
                 if (step.Name != "step")
                     continue;
@@ -42,8 +46,8 @@ namespace TestCaseDiffer.PageObjects
                 if (!Int32.TryParse(stepIdAttr.Value, out int stepId))
                     throw new WrongStepsException("Step id missed");
 
-				var prevStep = GetStepById(prevSteps, stepId);
-				var currentStep = GetStepById(currentSteps, stepId);
+				var prevStep = GetStepById(prevStepsDoc, stepId);
+				var currentStep = GetStepById(currentStepsDoc, stepId);
 
 				var prevStrs = prevStep == null ? Enumerable.Empty<XElement>() : prevStep.XPathSelectElements("parameterizedString");
 				var currentStrs = prevStep == null ? Enumerable.Empty<XElement>() : currentStep.XPathSelectElements("parameterizedString");
@@ -65,13 +69,12 @@ namespace TestCaseDiffer.PageObjects
 			return new TableRow(prev, current);
         }
 
-		private static XElement GetStepById(string steps, int stepId)
+		private static XElement GetStepById(XDocument steps, int stepId)
         {
-            if (String.IsNullOrEmpty(steps))
+            if (steps == null)
                 return null;
-
-            var prevXml = XDocument.Parse(steps);
-            return prevXml.XPathSelectElement($"steps/step[@id='{stepId}']");            
+			
+            return steps.XPathSelectElement($"steps/step[@id='{stepId}']");            
         }
 
 		private static string GetElementAtValue(int index, IEnumerable<XElement> elements)

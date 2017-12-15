@@ -28,8 +28,8 @@ namespace TestCaseDiffer.Service
 			{
 				try
 				{
-					container.Register(Component.For<IChangesProvider>().ImplementedBy<PreparedChangesProvider>());
-					//container.Register(Component.For<IChangesProvider>().ImplementedBy<TfsApiChangesProvider>());
+					//container.Register(Component.For<IChangesProvider>().ImplementedBy<PreparedChangesProvider>());
+					container.Register(Component.For<IChangesProvider>().ImplementedBy<TfsApiChangesProvider>());
 					container.Kernel.Resolver.AddSubResolver(new CollectionResolver(container.Kernel));
 					container.Install(FromAssembly.This());
 					return (int)HostFactory.Run(hostConfigurator => Configure<TestCaseDifferService>(hostConfigurator, container));

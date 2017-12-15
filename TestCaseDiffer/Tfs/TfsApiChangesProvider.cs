@@ -17,14 +17,13 @@ namespace TestCaseDiffer.Tfs
 			_tfsClient = tfsClient;
 		}
 
-		public IEnumerable<CaseChange> GetChanges(int testCaseId)
+		public ICollection<CaseChange> GetChanges(int testCaseId)
 		{
 			var workItem = _tfsClient.GetTestCase(testCaseId);
 			if (workItem == null)
 				throw new WorkItemNotFoundException();
 
-			foreach (Revision revision in workItem.Revisions)
-				yield return CaseChange.ParseRevision(revision);
+			return workItem.Revisions.OfType<Revision>().Select(x => CaseChange.ParseRevision(x)).ToList();
 		}
 	}
 }
